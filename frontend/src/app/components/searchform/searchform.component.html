@@ -1,0 +1,315 @@
+<div id="formContainer" class="container overflow-hidden col-md-6 offset-md-3  border rounded">
+  <div class="text-center p-3"><h4>Business search</h4></div>
+    <form id="searchForm">
+      
+      <div class="row px-4">
+        <div class="mb-3">
+          <label for="InputKeyword" class="form-label">Keyword <font color="#FF0000">*</font></label>
+              <input required matInput id="InputKeyword" name="InputKeyword" class="form-control form-control-lg" type="text" [(ngModel)]="keywordFromForm" [matAutocomplete]="auto" [formControl]="searchMoviesCtrl">
+              <mat-autocomplete  #auto="matAutocomplete" (optionSelected)="onSelected()" [displayWith]="displayWith">
+                <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                <ng-container *ngIf="!isLoading">
+                  <mat-option *ngFor="let movie of filteredMovies" [value]="movie">
+                    <span>{{movie}}</span>
+                  </mat-option>
+                </ng-container>
+              </mat-autocomplete>
+        </div>
+      </div>
+
+      <div class="row px-4">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label for="InputDistance" class="form-label">Distance</label>
+            <input type="text" class="form-control" id="InputDistance" [(ngModel)]="distanceFromForm" name="InputDistance" placeholder="10">
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="mb-3">
+            <label for="InputCategory" class="form-label">Category <font color="#FF0000">*</font></label>
+            <select class="form-select" id="InputCategory" [(ngModel)]="categoryFromForm" name="InputCategory">
+              <option value="Default" selectd>Default</option>
+              <option value="Arts and Entertainment">Arts and Entertainment</option>
+              <option value="Health and Medical">Health and Medical</option>
+              <option value="Hotels and Travel">Hotels and Travel</option>
+              <option value="Food">Food</option>
+              <option value="Professional Services">Professional Services</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row px-4">
+        <div class="mb-3">
+          <label for="InputLocation" class="form-label">Location<font color="#FF0000">*</font></label>
+          <input type="text" class="form-control" id="InputLocation" [(ngModel)]="locationFromForm" required name="InputLocation">
+        </div>
+      </div>
+
+      <div class="row px-4">
+        <div class="mb-3">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="AutoDetectCheck" name = "AutoDetectCheck" (click)="OnAutoDetectCheckChanged()">
+            <label class="form-check-label" for="AutoDetectCheck">Auto-detect my location</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-center">
+          <button type="button" class="btn btn-danger me-3" (click)="onSubmitSearchForm()">Submit</button>
+          <button type="button" class="btn btn-primary" (click)="OnClear()">Clear</button>
+        </div>
+      </div>
+
+      <div class="row p-2">
+        <div class="col text-center">
+          <p></p>
+        </div>
+      </div>
+    </form>
+</div>
+
+<div class="row p-4"></div>
+
+<div id="tableContainer" *ngIf="IsShowResultsTable == true" class="container overflow-hidden col-md-10 offset-md-1 border rounded">
+  <div class="table-responsive text-center">
+      <table class="table table-striped ">
+          <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Business Name</th>
+                <th>Rating</th>
+                <th>Distance(miles)</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let business of BusinessesList; let i = index" id="resultsTable">
+                    <td id="resultsTable1" class="col-1" (click)="OnClickBusiness(business.id)">{{i+1}}</td>
+                    <td id="resultsTable2" class="col-2" (click)="OnClickBusiness(business.id)"><img src={{business.image_url}} alt="img" height="70px" width="70px"></td>
+                    <td id="resultsTable3" class="col-6" (click)="OnClickBusiness(business.id)">{{business.name}}</td>
+                    <td id="resultsTable4" class="col-3" (click)="OnClickBusiness(business.id)">{{business.rating}}</td>
+                    <td id="resultsTable5" class="col-3" (click)="OnClickBusiness(business.id)">{{business.distance}}</td>
+                </tr>
+            </tbody>
+      </table>
+    </div>
+</div>
+
+<div *ngIf="IsShowResultsTableEmpty == true" id="missingresultWarningContainer" class="container overflow-hidden col-md-4 offset-md-4 border">
+  <h4 id="missingresultWarning"><font color="#FF0000">No results available</font></h4>
+</div>
+
+<div id="cardContainer" *ngIf="IsShowDetailCard == true" class="container col-md-6 offset-md-3 border rounded">
+  <div class="row text-left">
+    <a id="BackArrow" (click) = "OnClickArrow()">←</a>
+  </div>
+  <div class="row text-center">
+    <h4 id="detail">{{details.name}}</h4>
+  </div>
+  <div class="row">
+    <mat-tab-group dynamicHeight mat-align-tabs="center" style='min-height:350px'>
+      <mat-tab label="Business detail">
+        <div id="infoContainer" class="container overflow-hidden col-12">
+          <div class="row p-4"></div>
+            <div class="row">
+              <div class="container col-md-6 text-center" >
+                <p *ngIf="details.address!=''"><b>Address</b><br>{{details.address}}</p>
+                <p *ngIf="details.phoneNumber!=''"><b>Phone</b><br>{{details.phoneNumber}}</p>
+                <p *ngIf="details.status!=''"><b>Status</b><br><font color="#00FF00" *ngIf="details.status == 'Open Now'">{{details.status}}</font><font color="#FF0000" *ngIf="details.status == 'Closed'">{{details.status}}</font></p>
+              </div>
+              <div class="container col-md-6 text-center">
+                <p *ngIf="details.category!=''"><b>Category</b><br>{{details.category}}</p>
+                <p *ngIf="details.price!=''"><b>Price Range</b><br>{{details.price}}</p>
+                <p *ngIf="details.moreInfoLink!=''"><b>Visit yelp fpr more</b><br><a href={{details.moreInfoLink}} target="_blank">Business link</a></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col text-center">
+                <!-- Button trigger modal -->
+                <button *ngIf=" this.reservationService.CurrentDetailReserved == false" data-bs-toggle="modal" data-bs-target="#reserveModal" type="button" class="btn btn-primary" style="background-color: red; color:  white;border: none;border-radius: 5px;">Reserve Now</button>
+                <button *ngIf=" this.reservationService.CurrentDetailReserved == true"  type="button" class="btn btn-primary" style="background-color: blue; color: white;border: none;border-radius: 5px;" (click)="OnClickCancelRsvBtn()">Cancel reservation</button>
+              </div>
+            </div>
+            <div class="row p-2"></div>
+            <div class="row">
+              <div class="col text-center">
+                Share on:&nbsp;
+                <a id="twtimg">
+                  <svg (click) ="OnClickTwitter()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="DodgerBlue" class="bi bi-twitter" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                  </svg>
+                </a>
+                &nbsp;
+                <a id="fcbimg">
+                  <svg (click) ="OnClickFacebook()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="blue" class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                  </svg> 
+                </a>
+              </div>
+            </div>
+            <div class="row p-2"></div>
+            <div *ngIf="details.photoLinks.length>0" class="row">
+              <ngb-carousel class="no-indicators">
+                <ng-template ngbSlide>
+                  <div class="picsum-img-wrapper text-center">
+                    <img [src]=details.photoLinks[0] alt="Random first slide" height="200px" width="200px"/>
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="picsum-img-wrapper text-center">
+                    <img [src]=details.photoLinks[1] alt="Random second slide" height="200px" width="200px"/>
+                  </div>
+                </ng-template>
+                <ng-template ngbSlide>
+                  <div class="picsum-img-wrapper text-center">
+                    <img [src]=details.photoLinks[2] alt="Random third slide" height="200px" width="200px"/>
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+            </div>
+          <div class="row p-4"></div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Map location">
+        <div id="mapContainer"class="container overflow-hidden col-12">
+          <div class="row p-4"></div>
+          <div class="my-google-map">
+            <google-map width="100%" height="100%" [options]="mapOptions">
+              <map-marker [position]="marker.position"></map-marker>
+            </google-map>
+          </div>
+          <div class="row p-4"></div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Review">
+        <div id="tableContainer"  class="container overflow-hidden col-12">
+          <div class="table-responsive text-left">
+              <table class="table table-striped ">
+                    <tbody>
+                        <tr *ngFor="let review of reviewsList" id="reviewsTable">
+                          <td>
+                            <p><b>{{review.username}}</b><br>Rating: {{review.rating}}/5</p>
+                            <p>{{review.text}}</p>
+                            <p>{{review.time_created}}</p>
+                          </td>
+                        </tr>
+                    </tbody>
+              </table>
+            </div>
+        </div>
+      </mat-tab>
+  </mat-tab-group>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="row justofy-content-center">
+  <div class="col-md-6">
+    <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="reserveModalLabel">Reservation form</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <div class="modal-body">
+            <form [formGroup]="reservationForm" (ngSubmit)="onSubmitReservationForm()">
+              <div class="text-center">
+                <h5>{{details.name}}</h5>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input formControlName="inputEmail"
+                       [ngClass]="{'is-invalid':reservationFormSubmitted && reservationForm.controls.inputEmail.errors}"
+                       type="text"
+                       class="form-control">
+                <div *ngIf="reservationFormSubmitted && reservationForm.controls.inputEmail.errors" class="text-danger">
+                  <div *ngIf="reservationFormSubmitted && reservationForm.controls.inputEmail.errors.required">
+                    Email is required
+                  </div>
+                  <div *ngIf="reservationFormSubmitted && reservationForm.controls.inputEmail.errors.email">
+                    Email is not valid
+                  </div>
+                </div>
+              </div>
+
+              <div class="row p-2"></div>
+
+
+              <div class="form-group">
+                <label for="inputDate">Date</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  formControlName="inputDate"
+                  placeholder="mm/dd/yyyy"
+                  [ngClass]="{'is-invalid':reservationFormSubmitted && reservationForm.controls.inputDate.errors}"
+                />
+                <div *ngIf="reservationFormSubmitted && reservationForm.controls.inputDate.errors" class="text-danger">
+                  <div *ngIf="reservationFormSubmitted && reservationForm.controls.inputDate.errors.required">
+                    Date is required
+                  </div>
+                </div>
+              </div>
+
+              <div class="row p-2"></div>
+
+              <div class="form-group">
+                <label for="inputHour">Time</label>
+                <div class="row">
+                  <div class="col-3">
+                    <select class="form-control" formControlName="inputHour" [ngClass]="{'is-invalid':reservationFormSubmitted && reservationForm.controls.inputHour.errors}">
+                      <option value="10" selectd>10</option>
+                      <option value="11" selectd>11</option>
+                      <option value="12" selectd>12</option>
+                      <option value="13" selectd>13</option>
+                      <option value="14" selectd>14</option>
+                      <option value="15" selectd>15</option>
+                      <option value="16" selectd>16</option>
+                      <option value="17" selectd>17</option>
+                    </select>
+                  </div>
+                  <div class="col-1">
+                    :
+                  </div>
+                  <div class="col-3">
+                    <select class="form-control" formControlName="inputMin" [ngClass]="{'is-invalid':reservationFormSubmitted && reservationForm.controls.inputMin.errors}">
+                      <option value="10" selectd>00</option>
+                      <option value="15" selectd>15</option>
+                      <option value="30" selectd>30</option>
+                      <option value="45" selectd>45</option>
+                    </select>
+                  </div>
+                  <div class="col-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock" viewBox="0 0 16 16">
+                      <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+                      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+                    </svg>    
+                  </div>
+                </div>
+              </div>
+
+              <div class="row p-2"></div>
+
+              <div class="col-md-12 text-center">
+                <div class="form-group">
+                  <button class="btn btn-danger"> <!--type="button" (click)="OnClickRsvSubmitBtn()"-->
+                    Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="closeRsvForm">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

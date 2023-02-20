@@ -1,0 +1,21 @@
+{
+    "id": "Nm1iV8Aaat4EF_0hPevXhg",
+    "name": "BurgerShop",
+    "status": "Open Now",
+    "category": "Burgers | Fast Food | American (Traditional)",
+    "address": "724 S Spring St Los Angeles, CA 90014",
+    "coordinates": {
+        "latitude": 34.04384,
+        "longitude": -118.25268
+    },
+    "phoneNumber": "(213) 267-6993",
+    "price": "$$",
+    "moreInfoLink": "https://www.yelp.com/biz/burgershop-los-angeles-2?adjust_creative=p4N94VHlnD29zYwomkIVvw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_lookup&utm_source=p4N94VHlnD29zYwomkIVvw",
+    "photoLinks": [
+        "https://s3-media4.fl.yelpcdn.com/bphoto/OYRIqyjBhRPr-ZxsL7QGhQ/o.jpg",
+        "https://s3-media3.fl.yelpcdn.com/bphoto/tT6vQg2gLfR5Q17HRBdBCw/o.jpg",
+        "https://s3-media3.fl.yelpcdn.com/bphoto/6WGQmaFIgkZFyUI-pCVoPg/o.jpg"
+    ],
+    "twitterLink": "https://twitter.com/intent/tweet?url=https://www.yelp.com/biz/burgershop-los-angeles-2?adjust_creative=vroosL5uGpMpWJ6xp2BguQ&utm_medium=social&utm_source=twitter.com&text=Check%20BurgerShop%20on%20Yelp%2E",
+    "facebookLink": "https://www.facebook.com/sharer/sharer.php?u=https://www.yelp.com/biz/burgershop-los-angeles-2?utm_campaign=www_business_share_popup&utm_medium=social&utm_source=facebook.com"
+}

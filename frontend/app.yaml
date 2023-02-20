@@ -1,0 +1,14 @@
+runtime: nodejs16
+
+instance_class: F2
+
+env_variables: 
+  BUCKET_NAME: "yanjungu-usc-571-hw8-frontend-bucket"
+
+handlers:
+- url: /
+  static_files: dist/frontend/index.html
+  upload: dist/frontend/index.html
+
+- url: /
+  static_dir: dist/frontend 

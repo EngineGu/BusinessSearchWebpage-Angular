@@ -1,0 +1,142 @@
+[
+    {
+        "id": "Nm1iV8Aaat4EF_0hPevXhg",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/OYRIqyjBhRPr-ZxsL7QGhQ/o.jpg",
+        "name": "BurgerShop",
+        "rating": 4.5,
+        "distance": 3831.331816135466
+    },
+    {
+        "id": "sYn3SNQP-j2t2XSwjlCbRg",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/NaDjAGKMS7KhTX9dYMo7_Q/o.jpg",
+        "name": "Monty's Good Burger",
+        "rating": 4.5,
+        "distance": 5200.482810525704
+    },
+    {
+        "id": "6U55z4ejutsNYh7jAdWdwA",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/lX6Bp8eYQ2E1minZwpInwQ/o.jpg",
+        "name": "Black Sheep Burgers",
+        "rating": 4.5,
+        "distance": 14668.26044495857
+    },
+    {
+        "id": "aOvUcX4sZEm8BYDkp_561w",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/sz-wTODk_N7cAKiRwdcdNA/o.jpg",
+        "name": "Chris N’ Eddy’s",
+        "rating": 4.5,
+        "distance": 8778.396746092536
+    },
+    {
+        "id": "26fIBSlQkaTa29uoKAvZOw",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/QZ-ySiLA-bxU5qpdke_6CA/o.jpg",
+        "name": "Burgers Never Say Die",
+        "rating": 4,
+        "distance": 8952.892357918248
+    },
+    {
+        "id": "BA7TnabiZhm4S5Jv7jbkxA",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/SAutaCRj6G2_uzjZbmxF2A/o.jpg",
+        "name": "Hawkins House of Burgers",
+        "rating": 4,
+        "distance": 10785.452267168626
+    },
+    {
+        "id": "FSNZbYQyicXqo0UlSOyo_w",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/CAQb4Hpttb_TonYQIgJFPw/o.jpg",
+        "name": "Stout Burgers & Beers",
+        "rating": 3.5,
+        "distance": 274.0918712960771
+    },
+    {
+        "id": "iJrQpn0tlqtNKovcJLMgUg",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/nClnKtT7But_D_EN16x68g/o.jpg",
+        "name": "Oh My Burger",
+        "rating": 4.5,
+        "distance": 12168.387836088648
+    },
+    {
+        "id": "Q3pwRtT8v8oTCKFEYJgCbg",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/bFM8O7BGe8eqcp8F8cMkOQ/o.jpg",
+        "name": "Cassell's Hamburgers",
+        "rating": 4,
+        "distance": 4783.880537835696
+    },
+    {
+        "id": "67w_8mpBXoccq2uMYFOkWw",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/bQtXdQV9vsiL9ycsCEX6QQ/o.jpg",
+        "name": "Easy Street Burgers",
+        "rating": 4.5,
+        "distance": 15440.883358553281
+    },
+    {
+        "id": "DJek3FUewBzMc0gS-Gms9w",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/rSDJYD7foVFKvk0Dy6SzzQ/o.jpg",
+        "name": "Morrison Atwater Village",
+        "rating": 4.5,
+        "distance": 11378.055265864064
+    },
+    {
+        "id": "mHT_HX_99yAp8lYgy3IOug",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/d9WPMniQU9e5Yw8SVVuy5A/o.jpg",
+        "name": "Goldburger",
+        "rating": 4,
+        "distance": 9132.087281207854
+    },
+    {
+        "id": "kETtG3teylZTYOec5HsNDA",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/w-twYWmYGDGrcZjNP8n8wQ/o.jpg",
+        "name": "The WinDow Silver Lake",
+        "rating": 4,
+        "distance": 7663.292806261087
+    },
+    {
+        "id": "RLL5o2DC-VRcPq4RLdWNqg",
+        "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/hKImD4wHSFATX8QCpjXz4g/o.jpg",
+        "name": "Juicy J’s  Burgers and Wings",
+        "rating": 4.5,
+        "distance": 4707.840789299399
+    },
+    {
+        "id": "71W-QN3-_DHnzUkAc7EG6Q",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/k2lUZAeuAgqvfkpS5FxT5Q/o.jpg",
+        "name": "Stout Burgers & Beers",
+        "rating": 4,
+        "distance": 9494.885769450988
+    },
+    {
+        "id": "ierxTDAcyBrBXFyMadrAlA",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/ARtiDpRARqy7LXTTe4XcYA/o.jpg",
+        "name": "Burgerlords Chinatown",
+        "rating": 4,
+        "distance": 6498.180703160517
+    },
+    {
+        "id": "XHTsPRgT9UNBi_iZ15nFmw",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/bi-SzjgZF0jjlcN2ZRu9yg/o.jpg",
+        "name": "Blue Bird Burgers",
+        "rating": 5,
+        "distance": 5274.666326015683
+    },
+    {
+        "id": "esdnaTuF0U9JGU447A0yvQ",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/UtQYh5Qw6ZwEVIfEbOCEzw/o.jpg",
+        "name": "Goldburger",
+        "rating": 4.5,
+        "distance": 13571.314555020432
+    },
+    {
+        "id": "ekSFzN7BAycZ4DgBpTShoQ",
+        "image_url": "https://s3-media4.fl.yelpcdn.com/bphoto/LyJ0n3_Aok9dsm1FbPqD9A/o.jpg",
+        "name": "For The Win - Glendale",
+        "rating": 4.5,
+        "distance": 12512.424828282803
+    },
+    {
+        "id": "g-cA096jYc7qeBcGuu0Mzw",
+        "image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/KTUQMNmvETDMK43DCln5Mw/o.jpg",
+        "name": "Burger She Wrote",
+        "rating": 4,
+        "distance": 8726.224585205846
+    }
+]

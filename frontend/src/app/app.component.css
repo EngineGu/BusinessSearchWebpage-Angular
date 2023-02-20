@@ -1,0 +1,12 @@
+.bg-image{  
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(117, 124, 247,0.5)),url("../assets/city.jpg");  
+    background-position: 35%;
+    min-height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;  
+    background-attachment: fixed;
+}  
+
+myModal.in{
+    z-index: 999999;
+}

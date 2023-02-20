@@ -1,0 +1,18 @@
+#deleteIcon{
+    cursor: pointer;
+}
+
+#missingresultWarningContainer{
+    border-radius: 9999px;
+    vertical-align: middle;
+    text-align: center;
+    background-color: white;
+}
+
+#tableContainer{
+    background-color: white;
+}
+
+#reservationTable > td{
+    vertical-align: middle;
+}

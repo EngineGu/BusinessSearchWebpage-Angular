@@ -1,0 +1,12 @@
+<div class="d-flex">
+	<ul ngbNav #nav="ngbNav" class="nav-pills ms-auto" orientation="horizontal">
+		<li ngbNavItem="search" class="nav-item">
+			<a ngbNavLink routerLink="/search">Search</a>
+		</li>
+		<li ngbNavItem="mybookings" class="nav-item">
+			<a ngbNavLink routerLink="/bookings">My Bookings</a>
+		</li>
+	</ul>
+
+	<div [ngbNavOutlet]="nav" class="ms-4"></div>
+</div>
